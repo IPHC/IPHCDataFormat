@@ -142,13 +142,13 @@ class IPHCcommon:
     def BuildIPHCDataFormat(self):
         print YELLOW+"Building IPHCDataFormat ..."+NORMAL
         print ""
-        os.system("cd IPHCDataFormat/NTFormat/src && make")
+        os.system("cd IPHCDataFormat/NTFormat/src && make -j"+str(self.ncores))
         print ""
 
     def CompileIPHCAnalysis(self):
         print YELLOW+"Compling IPHCAnalysis ..."+NORMAL
-        os.system("mkdir IPHCAnalysis/.lib")
-        os.system("cd IPHCAnalysis && make all")
+        os.system("mkdir IPHCAnalysis/NTuple/.lib")
+        os.system("cd IPHCAnalysis/NTuple && make -j"+str(self.ncores)+" all")
         print ""
 
     def Center(self,pattern,width):
