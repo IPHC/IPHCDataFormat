@@ -34,8 +34,12 @@ namespace IPHCTree
     std::pair<Float_t,Float_t> x;  /// Feynman variable (p_L / p)
     Float_t          Q_scale;      /// Q scale
 
-	// Info from pdf (asked by Jean-Eric)
-    std::pair<Float_t,Float_t> xpdf;
+  	/// Info from pdf (asked by Jean-Eric)
+    /// REMOVED by Jean-Eric: PDF info not available
+    //std::pair<Float_t,Float_t> xpdf; 
+
+    /// Physics Process Id
+    unsigned int processID;
 
     /// PDG id of partons involved in collision
     std::pair<Char_t,Char_t> partonFlavor;

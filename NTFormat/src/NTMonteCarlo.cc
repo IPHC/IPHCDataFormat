@@ -12,7 +12,7 @@ void NTMonteCarlo::Reset(bool constructor_call)
   {
     partonFlavor = std::make_pair(0,0);
     x            = std::make_pair(0.,0.);
-    xpdf         = std::make_pair(0.,0.);
+    processID    = 0;
 
     // Clearing containers
     Generatedtaus.clear();
@@ -47,6 +47,7 @@ void NTMonteCarlo::Dump(std::ostream & os) const
   os << " ptHat = "  << ptHat << " ;";
   os << " Qscale = " << Q_scale << " ;";
   os << " TMEME = "  << TMEME << std::endl;
+  os << " ProcessID = " << processID << std::endl;
   os << " Nb genParticles saved = " << genParticles.size() << std::endl;
   os << " ------------------- old monte carlo ------------------- " << std::endl;
   os << " Nb taus = "  << Generatedtaus.size() << " ;";
