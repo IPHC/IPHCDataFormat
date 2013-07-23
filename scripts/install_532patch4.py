@@ -62,6 +62,14 @@ installer.CompileCMSSWmodules()
 # Builing dictionnary related to IPHCDataFormat
 installer.BuildIPHCDataFormat()
 
+# Systematics on jet energy
+if installer.IPHCAnalysis:
+    os.system("cp IPHCDataFormat/scripts/JR_Standalone.tgz .")
+    os.system("tar -xzf JR_Standalone.tgz")
+    os.system("rm -f JR_Standalone.tgz")
+    os.system("cd JR_Standalone/JetMETObjects/ && make -j"+str(installer.ncores))
+    os.system("mv JR_Standalone/lib/libJetMETObjects.so IPHCAnalysis/NTuple/")
+
 # Compiling IPHCAnalysis
 installer.CompileIPHCAnalysis()
 
