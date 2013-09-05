@@ -16,6 +16,7 @@ void NTMuon::Reset(bool constructor_call)
   isStandaloneMuon = false;
   isTrackerMuon    = false;
   isCaloMuon       = false;
+  isPFMuon         = false;
   NValidHits       = 0;
   NTrValidHits     = 0;
   NOfMatches       = 0;
@@ -53,6 +54,8 @@ void NTMuon::Dump(std::ostream & os) const
   os << "Tracker=" << static_cast<unsigned int>(isTrackerMuon);
   os << " , ";
   os << "Calo=" << static_cast<unsigned int>(isCaloMuon);
+  os << " , ";
+  os << "PF=" << static_cast<unsigned int>(isPFMuon);
   os << " )" << std::endl;
 
   os << " NValidHits = " << NValidHits << " ;";

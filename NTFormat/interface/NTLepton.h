@@ -129,8 +129,8 @@ namespace IPHCTree
         // return( ((isolation["PATNeutH"]+isolation["PATCharH"]+isolation["PATTrack"])/p4.Pt()));
         // modification (from Denis): avoid to duplicate TrackIso
         // (included in ChargedHadron) and take into account photons
-        return (isolation["PATNeutH"] + isolation["PATCharH"] + isolation["PATPhoto"]) 
-               / p4.Pt();
+        return (isolation["PATNeutH"] + isolation["PATCharH"] + isolation["PATPhoto"]) / p4.Pt();
+        //return (isolation["PF03Neut"] + isolation["PF03Char"] + isolation["PF03Phot"]) / p4.Pt();
       else return -999.;
     }
 

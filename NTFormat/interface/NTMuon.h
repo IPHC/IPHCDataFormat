@@ -28,6 +28,7 @@ namespace IPHCTree
     Bool_t isStandaloneMuon;
     Bool_t isTrackerMuon;
     Bool_t isCaloMuon;
+    Bool_t isPFMuon;
 
     // ------------------- associated track ------------------------
 
@@ -39,7 +40,7 @@ namespace IPHCTree
     // ----------- Infos used is SUSYstop selection ----------------
 	
 	// Is the muon coming from particle flow ?
-	Bool_t isPFMuon;
+	//Bool_t isPFMuon;
 
 	// Hits infos 
 	UShort_t numMatchedStations;
