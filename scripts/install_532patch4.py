@@ -70,6 +70,18 @@ if installer.IPHCAnalysis:
     os.system("cd JR_Standalone/JetMETObjects/ && make -j"+str(installer.ncores))
     os.system("mv JR_Standalone/lib/libJetMETObjects.so IPHCAnalysis/NTuple/")
 
+# Compiling LHAPDF
+installer.CompileLHAPDF()
+
+# Downloading PDF sets
+print YELLOW+"Download PDF sets ..."+NORMAL
+pdf = [ 'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/cteq6l1.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/cteq66.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/MSTW2008lo68cl.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/MSTW2008nlo68cl_asmz+68cl.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/MSTW2008nlo68cl_asmz-68cl.tar.gz']
+installer.InstallPDF(pdf)
+
 # Compiling IPHCAnalysis
 installer.CompileIPHCAnalysis()
 

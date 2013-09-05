@@ -184,3 +184,74 @@ class IPHCcommon:
             str+=pattern
         return str
 
+    def CompileLHAPDF(self):
+
+        # YAML-CPP
+        print YELLOW+"Building yaml-cpp for LHAPDF ..."+NORMAL
+        print " - Configuring ..."
+        os.system("cd IPHCAnalysis/NTuple/LHAPDF/install/yaml-cpp/build/ && cmake -DBUILD_SHARED_LIBS=ON ..")
+        print " - Compiling ..."  
+        os.system("cd IPHCAnalysis/NTuple/LHAPDF/install/yaml-cpp/build/ && make")
+        print " - Moving the headers folder..."
+        os.system("cd IPHCAnalysis/NTuple/LHAPDF/install/yaml-cpp/ && cp -rv include/* ../../include/")
+        print " - Moving the dynamic library ..."
+        os.system("cd IPHCAnalysis/NTuple/LHAPDF/install/yaml-cpp/build/ && cp *.so ../../../lib/")
+        print " - Checking the presence of the library 'libyaml-cpp.so' ..."
+        if os.path.isfile('IPHCAnalysis/NTuple/LHAPDF/lib/libyaml-cpp.so'):
+            print CYAN+"    -> OK"+NORMAL
+        else:
+            print RED  +"    -> BAD"+NORMAL
+            print "Stop now the recipe!"
+            sys.exit()
+        print ""
+
+        # LHAPDF
+        print YELLOW+"Building LHAPDF6 ..."+NORMAL
+        print " - Configuring ..."
+        mycmd = './configure --prefix='+self.CMSSW_DIR\
+                                       +'/IPHCAnalysis/NTuple/LHAPDF/'
+        mycmd += ' --disable-lhaglue --disable-python'
+        mycmd += ' --with-boost=/opt/exp_soft/cms/slc5_amd64_gcc462/external/boost/1.50.0-cms'
+        mycmd += ' --with-yaml-cpp-lib='+self.CMSSW_DIR\
+                                    +'/IPHCAnalysis/NTuple/LHAPDF/lib/ '
+        mycmd += ' --with-yaml-cpp-inc='+self.CMSSW_DIR\
+                                    +'/IPHCAnalysis/NTuple/LHAPDF/include/ '
+        print mycmd
+        os.system("cd IPHCAnalysis/NTuple/LHAPDF/install/LHAPDF-6.0.2 && "+mycmd)
+        print " - Compiling ..."
+        os.system("cd IPHCAnalysis/NTuple/LHAPDF/install/LHAPDF-6.0.2 && make -j"+str(self.ncores))
+        print " - Moving the dynamic library and the headers ..."
+        os.system("cd IPHCAnalysis/NTuple/LHAPDF/install/LHAPDF-6.0.2 && make install")
+        print " - Checking the presence of the library 'libyaml-cpp.so' ..."
+        if os.path.isfile('IPHCAnalysis/NTuple/LHAPDF/lib/libLHAPDF.so'):
+            print CYAN+"    -> OK"+NORMAL
+        else:
+            print RED  +"    -> BAD"+NORMAL
+            print "Stop now the recipe!"
+            sys.exit()
+        print ""
+        
+    def InstallPDF(self,pdf):
+
+        print YELLOW+"Downloading the PDF sets ..."+NORMAL
+        begin = "cd IPHCAnalysis/NTuple/LHAPDF/share/LHAPDF && " +\
+                "wget --no-check-certificate "
+        for item in pdf:
+            if not item.endswith('.tar.gz'):
+                print RED+"skip the file with bad extension: "+item+NORMAL
+                continue
+            os.system(begin+'"'+item+'"')
+            words = item.split('/')
+            if len(words)==0:
+                continue
+            if not words[-1].endswith('.tar.gz'):
+                print RED+"skip the file with bad extension: "+words[-1]+NORMAL
+                continue
+            filename = words[-1]
+            os.system("cd IPHCAnalysis/NTuple/LHAPDF/share/LHAPDF && tar xvzf "+filename)
+            os.system("cd IPHCAnalysis/NTuple/LHAPDF/share/LHAPDF && rm -f "+filename)
+            print ""
+
+
+        
+        
