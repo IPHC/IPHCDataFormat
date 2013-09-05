@@ -70,6 +70,9 @@ if installer.IPHCAnalysis:
     os.system("cd JR_Standalone/JetMETObjects/ && make -j"+str(installer.ncores))
     os.system("mv JR_Standalone/lib/libJetMETObjects.so IPHCAnalysis/NTuple/")
 
+# Compiling LHAPDF
+installer.CompileLHAPDF()
+
 # Compiling IPHCAnalysis
 installer.CompileIPHCAnalysis()
 
