@@ -16,7 +16,6 @@ installer.GoTo_CMSSWBASE_SRC()
 print YELLOW+"Installing CMSSW packages ..."+NORMAL
 print ""
 
-
 os.system("cvs co -r V00-00-09 EgammaAnalysis/ElectronTools")
 os.system("cvs co -r V09-00-01 RecoEgamma/EgammaTools")
 
@@ -41,10 +40,7 @@ os.system("cvs co -r V01-09-05 RecoLocalTracker/SubCollectionProducers")
 # Compiling all CMSSW modules (scram b)
 installer.CompileCMSSWmodules()
 
-
 os.system("cd EgammaAnalysis/ElectronTools/data && cat download.url | xargs wget")
-
-
 
 # Builing dictionnary related to IPHCDataFormat
 installer.BuildIPHCDataFormat()
@@ -57,8 +53,6 @@ if installer.IPHCAnalysis:
     os.system("cd JR_Standalone/JetMETObjects/ && make -j"+str(installer.ncores))
     os.system("mv JR_Standalone/lib/libJetMETObjects.so IPHCAnalysis/NTuple/")
 
-
-
 # Compiling LHAPDF
 installer.CompileLHAPDF()
 
@@ -68,9 +62,11 @@ pdf = [ 'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/cteq6l1.tar.gz',\
         'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/cteq66.tar.gz',\
         'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/MSTW2008lo68cl.tar.gz',\
         'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/MSTW2008nlo68cl_asmz+68cl.tar.gz',\
-        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/MSTW2008nlo68cl_asmz-68cl.tar.gz']
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/MSTW2008nlo68cl_asmz-68cl.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/NNPDF23_nlo_as_0119.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/NNPDF23_nlo_as_0118.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/NNPDF23_nlo_as_0120.tar.gz']
 installer.InstallPDF(pdf)
-
 
 # Compiling IPHCAnalysis
 installer.CompileIPHCAnalysis()
