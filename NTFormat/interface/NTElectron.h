@@ -19,7 +19,9 @@ namespace IPHCTree
   public:
 
     // ---------------------- general info -------------------------
-
+    
+    //get Gsf electron 4-momenta
+    TLorentzVector p4Gsf;
 	// Eta for the superCluster
     Float_t etaSuperCluster;
 

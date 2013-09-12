@@ -110,7 +110,9 @@ namespace IPHCTree
     /// Alias to Dump method
     virtual void PrintInfo(std::ostream & os = std::cout) const
     { Dump(os); }
-
+    
+    
+/*
     /// Get the Sum of isolation["ECalo03"] and isolation["HCalo03"]
     float CaloIso03() const
     { return isolation["ECalo03"] + isolation["HCalo03"]; }
@@ -165,7 +167,11 @@ namespace IPHCTree
                 - neutralRho*M_PI*0.3*0.3) / p4.Pt();
       else return -999.;
     }
-
+   */
+   
+   
+   
+   
   };
 }
 #endif

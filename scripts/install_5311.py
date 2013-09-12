@@ -20,6 +20,24 @@ print ""
 os.system("cvs co -r V00-00-09 EgammaAnalysis/ElectronTools")
 os.system("cvs co -r V09-00-01 RecoEgamma/EgammaTools")
 
+
+# install met recipe
+os.system("addpkg DataFormats/PatCandidates V06-05-06-12")
+os.system("addpkg PhysicsTools/PatAlgos V08-09-62")
+os.system("addpkg PhysicsTools/PatUtils V03-09-28")
+os.system("addpkg RecoMET/METAnalyzers V00-00-08")  
+os.system("addpkg DataFormats/METReco V03-03-11-01")
+os.system("addpkg JetMETCorrections/Type1MET V04-06-09-02")
+
+# met cleaning
+os.system("cvs co -r V00-00-13-01 RecoMET/METFilters")
+os.system("cvs co -r V01-00-11-01 DPGAnalysis/Skims")
+os.system("cvs co -r V00-11-17 DPGAnalysis/SiStripTools")
+os.system("cvs co -r V00-00-08 DataFormats/TrackerCommon")
+os.system("cvs co -r V01-09-05 RecoLocalTracker/SubCollectionProducers")
+
+
+
 # Compiling all CMSSW modules (scram b)
 installer.CompileCMSSWmodules()
 
