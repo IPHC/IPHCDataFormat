@@ -60,12 +60,12 @@ installer.CompileLHAPDF()
 print YELLOW+"Download PDF sets ..."+NORMAL
 pdf = [ 'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/cteq6l1.tar.gz',\
         'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/cteq66.tar.gz',\
-        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/MSTW2008lo68cl.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/MSTW2008lo68cl.tar.gz',\
         'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/MSTW2008nlo68cl_asmz+68cl.tar.gz',\
         'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/MSTW2008nlo68cl_asmz-68cl.tar.gz',\
-        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/NNPDF23_nlo_as_0119.tar.gz',\
-        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/NNPDF23_nlo_as_0118.tar.gz',\
-        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/unvalidated/NNPDF23_nlo_as_0120.tar.gz']
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/NNPDF23_nlo_as_0119.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/NNPDF23_nlo_as_0118.tar.gz',\
+        'http://www.hepforge.org/archive/lhapdf/pdfsets/6.0/NNPDF23_nlo_as_0120.tar.gz']
 installer.InstallPDF(pdf)
 
 # Compiling IPHCAnalysis
