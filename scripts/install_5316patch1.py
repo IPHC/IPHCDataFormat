@@ -23,7 +23,7 @@ os.system("git cms-addpkg EgammaAnalysis/ElectronTools")
 os.system("cd EgammaAnalysis/ElectronTools/data && cat download.url | xargs wget")
 os.system("cd -")
 os.system("git cms-addpkg RecoEgamma/EgammaTools")
-os.system("git cms-merge-topic cms-analysis-tools:5_3_16_patch1-updateTopRefSel")
+#os.system("git cms-merge-topic cms-analysis-tools:5_3_16_patch1-updateTopRefSel")
 
 # Compiling all CMSSW modules (scram b)
 installer.CompileCMSSWmodules()
