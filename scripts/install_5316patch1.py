@@ -16,6 +16,7 @@ installer.GoTo_CMSSWBASE_SRC()
 print YELLOW+"Installing CMSSW packages ..."+NORMAL
 print ""
 
+os.system("git cms-init")
 os.system("git cms-addpkg PhysicsTools/PatAlgos")
 os.system("git cms-merge-topic cms-analysis-tools:5_3_16_patch1-testNewTau")
 os.system("git cms-merge-topic -u TaiSakuma:53X-met-140217-01")
